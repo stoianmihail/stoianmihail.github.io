@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: _The open problems in computer science are my daily bread._
+subtitle: "The open problems in computer science are my daily bread."
 # <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
 profile:
