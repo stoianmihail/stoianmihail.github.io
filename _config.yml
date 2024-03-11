@@ -124,7 +124,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: snippetX # blog_name will be displayed in your blog page
-blog_description: computer science research snippets 
+blog_description: computer science research snippets
 permalink: /blog/:year/:title/
 
 # Pagination

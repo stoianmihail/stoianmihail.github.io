@@ -14,11 +14,18 @@ sort: 3
 
 <p>An up-to-date list is available on <a href="https://scholar.google.com/citations?user=7PEMO6UAAAAJ" target="_blank">Google Scholar</a>.</p>
 
+<h1> manuscripts </h1>
+{% bibliography -f papers -q @*[category=manuscripts]* %}
+
+<h1> conferences & journals </h1>
+{% bibliography -f papers -q @*[category=conference]* %}
+
+<!--
 <h1> conferences & journals </h1>
 {% for y in page.years %}
   <h2 class="year">{{y}}</h2>
   {% bibliography -f papers -q @*[year={{y}},category=conference]* %}
-{% endfor %}
+{% endfor %} -->
 
 <h1> workshops </h1>
 {% bibliography -f papers -q @*[category=workshop]* %}

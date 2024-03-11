@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: Home
 permalink: /
 subtitle: <i>"The open problems in computer science are my daily bread."</i>
 # <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
