@@ -71,11 +71,12 @@
           <p>During my studies I did two industry internships at Oracle Labs and Amazon Redshift.</p>
           <p>Whenever I see a problem in other areas that is similar to a database problem, I cannot leave it unsolved (see my blog).</p>
         </div>
-        <a href="https://scholar.google.com/citations?user=7PEMO6UAAAAJ&hl=en" style="font-size: 20px;">[Google Scholar]</a>
+        <a href="https://scholar.google.com/citations?user=7PEMO6UAAAAJ&hl=en" style="font-size: 20px;">[Google Scholar]</a> <span style="font-size: 20px;">|</span> <a href="https://x.com/mihail_sto" style="font-size: 20px;">[Twitter]</a>
       </div>
     </div>
   </div>
   <div>
+    <!-- Preprints -->
     <div class="w-container">
       <div class="content-width-div w-clearfix">
       <h2 id="preprints">Preprints</h2>
@@ -85,23 +86,20 @@
             <a href="https://arxiv.org/abs/2405.03018">TSP Escapes the $O(2^n n^2)$ Curse</a> [<a href="https://github.com/stoianmihail/fastertsp">proof-of-concept</a>]<br />
             Mihail Stoian
             <br />
-            <br /><code>TL;DR.</code> First improvement on the $O(2^n n^2)$-time algorithm for the Traveling Salesman Problem by Bellman and Held-Karp, designed in 1962.
-          </p>
-        </li>
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2404.18522">Did Fourier Really Meet Möbius? Fast Subset Convolution via FFT</a><br />
-            Mihail Stoian
+            <br /><code>TL;DR:</code> First improvement on the $O(2^n n^2)$-time algorithm for the Traveling Salesman Problem by Bellman and Held-Karp, designed in 1962.
             <br />
-            <br /><code>TL;DR.</code> There is no need for Zeta/Moebius transforms in <a href="https://arxiv.org/abs/cs/0611101">fast subset convolution</a>. FFT suffices. Even in the same running time.
+            <br /><code>TL;DR++:</code> This <a href="https://xkcd.com/399/">xkcd</a> needs a remake.
+            <br />
+            <br />
+            <img src="assets/tsp-before.png" alt="Description of image" style="width:auto;height:auto;" />
           </p>
-        </li>
+        </li>        
         <li>
           <p>
             <a href="https://arxiv.org/abs/2404.11364v2">Sinking an Algorithmic Isthmus: $(1 + \varepsilon)$-Approximate Min-Sum Subset Convolution</a><br />
             Mihail Stoian
             <br />
-            <br /><code>TL;DR.</code> First proposal for approximate min-sum subset convolution. This results in out-of-the-box exp-time $(1 + \varepsilon)$-approximations for prize-collecting Steiner tree, min-cost $k$-coloring, protein networks, and more applications in computational biology.
+            <br /><code>TL;DR:</code> First proposal for approximate min-sum subset convolution. This results in out-of-the-box exp-time $(1 + \varepsilon)$-approximations for prize-collecting Steiner tree, min-cost $k$-coloring, protein networks, and more applications in computational biology.
           </p>
         </li>
         <li>
@@ -109,7 +107,7 @@
             <a href="https://arxiv.org/abs/2403.04867">Corra: Correlation-Aware Column Compression</a><br />
             Hanwen Liu, <strong>Mihail Stoian</strong>, Alexander van Renen, Andreas Kipf
             <br />
-            <br /><code>TL;DR.</code> Are you still using FOR-, Delta-, RLE-encodings? Correlation-aware column encodings can compress your data even better!
+            <br /><code>TL;DR:</code> Are you still using FOR-, Delta-, RLE-encodings? Correlation-aware column encodings can compress your data even better!
           </p>
         </li>
         <li>
@@ -120,19 +118,21 @@
         </li>
         <li>
           <p>
-            <a href="https://arxiv.org/abs/2209.12332">On the Optimal Linear Contraction Order of Tree Tensor Networks, and Beyond</a> [<a href="https://github.com/stoianmihail/netzwerk">code</a>]<br />
+            <a href="https://arxiv.org/abs/2209.12332">On the Optimal Linear Contraction Order of Tree Tensor Networks, and Beyond</a><br />
             <strong>Mihail Stoian</strong>, Richard Milbradt, Christian B. Mendl<br />
+            <br /><code>TL;DR:</code> Polynomial-time contraction ordering algorithm for <i>tree tensor networks</i> for the total contraction cost. Extension of the well-known <code>IKKBZ</code> algorithm in databases. Check out our package <a href="https://github.com/stoianmihail/netzwerk"><code>Netzwerk</code></a> with plug-in for <code>opt_einsum</code> and <code>cotengra</code>!
           </p>
         </li>
       </ul>
   
+      <!-- Publications -->
       <h2 id="Publications">Publications</h2>
         <h3 id="2023">2023</h3>
         <ul>
           <li>
             <p><a href="https://dl.acm.org/doi/10.1145/3555041.3589393">Fast Joint Shapley Values</a>
               [<a href="https://github.com/stoianmihail/fast-joint-shapley">code</a>] [<a
-                href="https://dl.acm.org/doi/10.1145/3555041.3589393">talk</a>]<br />
+                href="https://dl.acm.org/doi/10.1145/3555041.3589393">recording</a>]<br />
               Mihail Stoian<br />
               <em>SRC @ SIGMOD 2023</em>.
             </p>
@@ -140,7 +140,7 @@
           <li>
             <p><a href="https://dl.acm.org/doi/10.1145/3555041.3589391">Faster FFT-based Wildcard Pattern Matching</a>
               [<a href="https://github.com/stoianmihail/faster-like">code</a>] [<a
-                href="https://dl.acm.org/doi/10.1145/3555041.3589391">talk</a>]<br />
+                href="https://dl.acm.org/doi/10.1145/3555041.3589391">recording</a>]<br />
               Mihail Stoian<br />
               <em>SRC @ SIGMOD 2023</em>.
             </p>
@@ -152,7 +152,7 @@
           <li>
             <p><a href="https://dl.acm.org/doi/10.1145/3514221.3520247">Concurrent Link-Cut Trees</a> [<a
                 href="https://github.com/stoianmihail/Concurrent-Link-Cut-Trees">code</a>] [<a
-                href="https://youtu.be/qn-998LN5Zg">talk</a>]<br />
+                href="https://youtu.be/qn-998LN5Zg">recording</a>]<br />
               Mihail Stoian | Advised by Jana Giceva and Philipp Fent<br />
               <em>SRC @ SIGMOD 2022</em>.
             </p>
@@ -164,7 +164,7 @@
           <li>
             <p><a href="https://arxiv.org/pdf/2108.05117.pdf">Towards Practical Learned Indexing</a> [<a
                 href="https://github.com/stoianmihail/TrieSpline">code</a>] [<a
-                href="https://www.youtube.com/watch?v=NTu95CrtWw0">talk</a>]<br />
+                href="https://www.youtube.com/watch?v=NTu95CrtWw0">recording</a>]<br />
               <strong>Mihail Stoian</strong>, Andreas Kipf, Ryan Marcus, and Tim Kraska.<br />
               <em>AIDB @ VLDB 2021</em>.
             </p>
@@ -211,7 +211,22 @@
       </div>
     </div>
   </div>
-    
+
+  <!-- Invited Talks -->
+  <div class="w-container">
+    <div class="content-width-div w-clearfix">
+    <h2 id="preprints">Invited Talks</h2>
+    <ul>
+      <li>
+        <p>
+          <i>What do databases and tensor networks have in common?</i> August, 2023<br />@Universität Jena @<a href="https://www.ti2.uni-jena.de/team/prof-joachim-giesen">Joachim Giesen</a>'s group. Check out their amazing tools: <a href="https://www.matrixcalculus.org">Matrix Calculus</a>, used in RelationalAI's <a href="https://fdbresearch.github.io/workshop2022/slides/Mahmoud.AboKhamis.FDBworkshop2022.slides.pdf">AutoDiff</a>, and <a href="https://www.ti2.uni-jena.de/research">more</a>!
+        </p>
+      </li>  
+    </ul>
+    </div>
+  </div>
+
+  <!-- Contact -->
   <div class="w-container">
     <div class="content-width-div w-clearfix">
       <h2 id="contact">Contact</h2>
