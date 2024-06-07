@@ -72,7 +72,7 @@
           <img src="assets/tsp-before.png" alt="Description of image" style="width:auto;height:auto; display: block; margin-left: auto; margin-right: auto;" />
           <p style="text-align: center; font-size: 10px;">Original: https://xkcd.com/399/</p>
           <p>
-            <b>TL;DR</b> How TSP can be solved in time $O(2^n n^2 / 2^{\Omega(\sqrt{\log n})})$-time (<a href="https://arxiv.org/abs/2405.03018">pre-print</a>). 
+            <b>TL;DR</b> How TSP can be solved in time $2^n n^2 / 2^{\Omega(\sqrt{\log n})}$ (<a href="https://arxiv.org/abs/2405.03018">pre-print</a>). 
           </p>
           <p>
             It's summer and you were thinking of making a round-trip of your country. There is one problem: You're still a student and that ain't be cheap.
@@ -218,7 +218,7 @@
 
           <h3>Summary</h3>
           <p>
-            Combining the last parts, we obtain an $O(2^n n^2 / 2^{\Omega(\sqrt{\log n})})$-time algorithm for TSP. This improves over the decades old algorithm taught in every introductory dynamic programming lecture.
+            Combining the last parts, we obtain a faster algorithm that runs in time $2^n n^2 / 2^{\Omega(\sqrt{\log n})}$. This improves over the decades old algorithm taught in every introductory dynamic programming lecture.
             Feel free to use this blog post in your teaching. For more details, check out the <a href="https://arxiv.org/abs/2405.03018">pre-print</a>.
             You can also use <a href="https://github.com/stoianmihail/fastertsp">this</a> proof-of-concept notebook: It implements the algorithm using the naive evaluation of the min-plus product.
             Figures to better visualize the algorithm for this blog post are more than welcome!
