@@ -69,7 +69,7 @@
         <h3 class="home-heading">TSP Escapes the $O(2^n n^2)$ Curse</h3>
         <div href="" class="w-richtext">
           <img src="assets/tsp-before.png" alt="Description of image" style="width:auto;height:auto; display: block; margin-left: auto; margin-right: auto;" />
-          <br />
+          <p style="text-align: center; font-size: 10px;">Original: https://xkcd.com/399/</p>
           <p>
             It's summer and you were thinking of making a round-trip of your country. There is one problem: You're still a student and that ain't be cheap.
             You have two options:
@@ -98,7 +98,7 @@
               <p><i>Given a list of your favorite cities and the distances between these, what is the shortest trip so that each city is visited exactly once and you return to your home city?</i></p>
             </div>
           <p>
-              While there are multiple ways to go about solving this (see <a href="https://medium.com/basecs/speeding-up-the-traveling-salesman-using-dynamic-programming-b76d7552e8dd">here</a> for a nice Medium post), we'll focus on the dynamic programming solution. This is also what you see in the xkcd you saw at the beginning of the post.
+              While there are multiple ways to go about solving this (see <a href="https://medium.com/basecs/speeding-up-the-traveling-salesman-using-dynamic-programming-b76d7552e8dd">here</a> for a nice Medium post), we'll focus on the dynamic programming solution. This is also what you saw in the xkcd at the beginning.
           </p>
 
           <br />
@@ -147,14 +147,13 @@
             </div>
           </p>
           <p>
-            You probably don't need an explanation what this stands for. Now, consider again the DP-recursion for TSP. Then this equation. <i>Do you see any pattern?</i>
+            You probably don't need an explanation what this stands for. Now, regard again the DP-recursion for TSP. Then again this equation. <i>Do you see any pattern?</i>
             <br />
             <br />
-            <i>"Wait, is the DP-recursion a matrix multiplication? But where is the $\times$ sign?</i>
+            <i>"Wait, is the DP-recursion a matrix multiplication?</i>
             <br />
             <br />
             Indeed, it <i>is</i> a matrix multiplication, but in the $(\min, +)$ semi-ring. Ok, this notation might raise some questions. So we've all been used to the $(+, \times)$ ring, where you multiply the entries and then sum the products. In the $(\min, +)$ semi-ring, instead of multiplying the entries you add them and take the minimum of these.
-
           </p>
         </div>
       </div>
