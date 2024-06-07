@@ -14,12 +14,11 @@ body {
 .blog-item {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: 20px 0;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  margin: 20px auto; /* Changed to auto to center */
   overflow: hidden;
   transition: transform 0.2s;
-  width: 80%;
-  max-width: 800px;
+  width: 75%; /* Adjusted width to make it smaller */
   text-decoration: none;
   color: inherit;
 }
@@ -39,8 +38,9 @@ body {
 }
 
 .blog-title {
-  font-size: 24px;
+  color: #000;
   margin: 0 0 0px;
+  text-align: center;
 }
 
 .blog-abstract {
