@@ -87,7 +87,7 @@
             <div class="strawpoll-embed" id="strawpoll_1MnwkP385n7" style="height: 480px; max-width: 640px; width: 100%; margin: 0 auto; display: flex; flex-direction: column;"><iframe title="StrawPoll Embed" id="strawpoll_iframe_1MnwkP385n7" src="https://strawpoll.com/embed/1MnwkP385n7" style="position: static; visibility: visible; display: block; width: 100%; flex-grow: 1;" frameborder="0" allowfullscreen allowtransparency>Loading...</iframe><script async src="https://cdn.strawpoll.com/dist/widgets.js" charset="utf-8"></script></div>
           </p>
           <p>
-            Ok, so if you opted for (a), maybe this blog post will be boring for you <span style='font-size:20px;'>&#128564;</span>.
+            Ok, so if you opted for (a), maybe this blog post might be boring for you <span style='font-size:20px;'>&#128564;</span>.
             But If you opted for (b), you'll probably enjoy what follows.
           </p>
           
@@ -98,21 +98,21 @@
             The problem of having the <i>shortest</i> trip - so what you choose by (b) - is also known as the Traveling Salesmen Problem (probably you knew this, otherwise you wouldn't have landed on this post).
             The "formal" definition would be:
           </p>
-            <div class="box">
-              <p><i>Given a list of your favorite cities and the distances between these, what is the shortest trip so that each city is visited exactly once and you return to your home city?</i></p>
-            </div>
+          <div class="box">
+            <p><i>Given a list of your favorite cities and the distances between these, what is the shortest trip so that each city is visited exactly once and you return to your home city?</i></p>
+          </div>
           <p>
-              While there are multiple ways to go about solving this (see <a href="https://medium.com/basecs/speeding-up-the-traveling-salesman-using-dynamic-programming-b76d7552e8dd">here</a> for a nice Medium post), we'll focus on the dynamic programming solution. This is also what you saw in the xkcd at the beginning.
+            While there are multiple ways to go about solving this (see <a href="https://medium.com/basecs/speeding-up-the-traveling-salesman-using-dynamic-programming-b76d7552e8dd">here</a> for a nice Medium post), we'll focus on the dynamic programming solution. This is also what you saw in the xkcd at the beginning.
           </p>
 
           <br />
           <h3>The Dynamic Programming Solution</h3>
           <p>
             If you're into algorithms / computer science, you've probably seen this in your introductory courses. It's an algorithm devised in 1962 by Bellman, and independently by Held and Karp. The algorithm goes as follows:
-            You have a dynamic programming (DP) table $\mathrm{dp}$ that is indexed by subsets of the cities <i>and</i> by the last city visited in the subset.
+            You have a dynamic programming (DP) table $\mathrm{dp}$ that is indexed by subsets of the cities <i>and</i> by the last city visited in that subset.
             <br />
             <br />
-            Let's outline the DP-recursion. In the following, let $n$ be the number of cities $c$ be the $n\times n$ cost matrix, so $c(i, j)$ is the distance between cities $i$ and $j$. Then, 
+            Let's outline the DP-recursion. In the following, let $n$ be the number of cities and $c$ be the $n\times n$ cost matrix - so $c(i, j)$ is the distance between cities $i$ and $j$. Then, 
           </p>
           <div style="text-align: center;">
             <p>
@@ -131,12 +131,12 @@
             </div>
           </p>
           <p>
-            A convenient way to compute the $\mathrm{dp}$-table is to fix a cardinality $\ell \in \{2, \ldots, n\}$ and compute the $\mathrm{dp}$-values for all sets of cardinality $\ell$.
+            A convenient way to compute the $\mathrm{dp}$-table is to fix a cardinality $\ell \in \{2, \ldots, n\}$ and compute the $\mathrm{dp}$-values for all subsets of cardinality $\ell$.
             In other words, the $\mathrm{dp}$-table is computed <i>layer-wise</i>.
           </p>
           <h4>Running Time</h4>
             <p>
-              The algorithm runs in time $O(2^n n^2)$, since for each state $(S, k)$ we have to loop over all $j$ in $S \setminus \{k\}$.
+              The algorithm runs in time $O(2^n n^2)$ since for each state $(S, k)$ we have to loop over all $j$ in $S \setminus \{k\}$.
               You'd be surprised to learn that, apart from some special TSP instances, this is the best we can do for the general case.
             <br />
             <br />
@@ -158,10 +158,10 @@
             You probably don't need an explanation what this stands for. Now, regard again the DP-recursion for TSP. Then again this equation. <i>Do you see any pattern?</i>
             <br />
             <br />
-            <i>"Wait, is the DP-recursion a matrix multiplication?</i>
+            <i>"Wait, is the DP-recursion a matrix multiplication?"</i>
             <br />
             <br />
-            Indeed, the shape of the DP-recursion resembles that of a matrix multiplication. Namely, the entry $\mathrm{dp}(S \setminus \{k\}, j)$ interacts with the entry $c_{j,k}$. This is nothing else but a matrix multiplication in the $(\min, +)$ semi-ring. Ok, this notation might raise some questions. So we've all been used to the $(+, \times)$ ring, where you multiply the entries and then sum the products. In the $(\min, +)$ semi-ring, instead of multiplying the entries you add them and take the minimum of these.
+            Indeed, the shape of the DP-recursion resembles that of a matrix multiplication. Namely, the entry $\mathrm{dp}(S \setminus \{k\}, j)$ interacts with the entry $c_{j,k}$. So this is nothing else but a matrix multiplication in the $(\min, +)$ semi-ring. Ok, this notation might raise some questions. So we've all been used to the $(+, \times)$ ring, where you multiply the entries and then sum the products. In the $(\min, +)$ semi-ring, instead of multiplying the entries you add them and take the minimum of these.
             Formally a matrix multiplication (product) in the $(\min, +)$ semi-ring is defined as:
             <div style="text-align: center;">
               <p>
@@ -180,8 +180,8 @@
           <br />
           <h3>The New Algorithm</h3>
           <p>
-            So we just saw that, actually, the standard Bellman-Held-Karp algorithm is doing naively the min-plus matrix product between the previous layer of the DP-table and the cost matrix.
-            For compliance with the existing algorithms on min-plus matrix products, we group the DP-rows of the previous layer so to have only square matrices.
+            So we just saw that the standard Bellman-Held-Karp algorithm is actually doing the min-plus matrix product between the previous layer of the DP-table and the cost matrix in a very naive manner.
+            <!-- For compliance with the existing algorithms on min-plus matrix products, we group the DP-rows of the previous layer so to have only square matrices. -->
 
           </p>
           <h4>Running Time</h4>
@@ -206,9 +206,9 @@
           </p>
           <h4>Min-Plus Matrix Product</h4>
           <p>
-            Fortunately for us, there has been a long line of research on this problem.
+            Fortunately, there is. Indeed, there has been a long line of research on this problem.
             Research on faster min-plus matrix product has already started in the 1976 with Fredman's work on All-Pairs Shortest Paths (APSP), which is in itself very interesting problem in algorithmic design.
-            The fastest algorithm is due to Williams and runs in the following (very complicated looking) term:
+            The <a href="https://arxiv.org/abs/1312.6680">fastest algorithm</a> is due to Williams and runs in the following (very complicated looking) term:
             <div style="text-align: center;">
               <p>
                 $n^3 / 2^{\Omega(\sqrt{\log n})}$.
@@ -218,7 +218,7 @@
 
           <h3>Summary</h3>
           <p>
-            Combining the last parts, we obtain an $O(2^n n^2 / 2^{\Omega(\sqrt{\log n})})$-time algorithm for TSP. This improves over the decades old algorithm taught in every lecture since the 60's.
+            Combining the last parts, we obtain an $O(2^n n^2 / 2^{\Omega(\sqrt{\log n})})$-time algorithm for TSP. This improves over the decades old algorithm taught in every introductory dynamic programming lecture.
             Feel free to use this blog post in your teaching. For more details, check out the <a href="https://arxiv.org/abs/2405.03018">pre-print</a>.
             You can also use <a href="https://github.com/stoianmihail/fastertsp">this</a> proof-of-concept notebook: It implements the algorithm using the naive evaluation of the min-plus product.
             Figures to better visualize the algorithm for this blog post are more than welcome!
