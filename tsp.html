@@ -71,6 +71,9 @@
           <img src="assets/tsp-before.png" alt="Description of image" style="width:auto;height:auto; display: block; margin-left: auto; margin-right: auto;" />
           <p style="text-align: center; font-size: 10px;">Original: https://xkcd.com/399/</p>
           <p>
+            <b>TL;DR</b> How TSP can be solved in time $O(2^n n^2 / 2^{\Omega(\sqrt{\log n})})$-time (<a href="https://arxiv.org/abs/2405.03018">pre-print</a>). 
+          </p>
+          <p>
             It's summer and you were thinking of making a round-trip of your country. There is one problem: You're still a student and that ain't be cheap.
             You have two options:
             <ol type="a">
@@ -84,7 +87,7 @@
           </p>
           <p>
             Ok, so if you opted for (a), maybe this blog post will be boring for you <span style='font-size:20px;'>&#128564;</span>.
-            If you opted for (b), you'll probably enjoy this.
+            But If you opted for (b), you'll probably enjoy what follows.
           </p>
           
           
@@ -126,6 +129,10 @@
               </p>
             </div>
           </p>
+          <p>
+            A convenient way to compute the $\mathrm{dp}$-table is to fix a cardinality $\ell \in \{2, \ldots, n\}$ and compute the $\mathrm{dp}$-values for all sets of cardinality $\ell$.
+            In other words, the $\mathrm{dp}$-table is computed <i>layer-wise</i>.
+          </p>
           <h4>Running Time</h4>
             <p>
               The algorithm runs in time $O(2^n n^2)$, since for each state $(S, k)$ we have to loop over all $j$ in $S \setminus \{k\}$.
@@ -153,8 +160,67 @@
             <i>"Wait, is the DP-recursion a matrix multiplication?</i>
             <br />
             <br />
-            Indeed, it <i>is</i> a matrix multiplication, but in the $(\min, +)$ semi-ring. Ok, this notation might raise some questions. So we've all been used to the $(+, \times)$ ring, where you multiply the entries and then sum the products. In the $(\min, +)$ semi-ring, instead of multiplying the entries you add them and take the minimum of these.
+            Indeed, the shape of the DP-recursion resembles that of a matrix multiplication. Namely, the entry $\mathrm{dp}(S \setminus \{k\}, j)$ interacts with the entry $c_{j,k}$. This is nothing else but a matrix multiplication in the $(\min, +)$ semi-ring. Ok, this notation might raise some questions. So we've all been used to the $(+, \times)$ ring, where you multiply the entries and then sum the products. In the $(\min, +)$ semi-ring, instead of multiplying the entries you add them and take the minimum of these.
+            Formally a matrix multiplication (product) in the $(\min, +)$ semi-ring is defined as:
+            <div style="text-align: center;">
+              <p>
+                $C_{i,j} = \displaystyle\min_{k}\:(A_{i,k} + B_{k,j})$.
+              </p>
+            </div>
           </p>
+          <p>
+            If you paid attention, computing $\mathrm{dp}(S, k)$ is not exactly a matrix product, but a vector inner-product in the $(\min, +)$ semi-ring between the DP-row $\mathrm{dp}(S \setminus \{k\}, :)$ and the column $c_{:, k}$ of the cost matrix.
+            To actually get the matrix product we want, we just need to group multiple rows of the last layer of the DP-table, put them into many square matrices, and take their product with the cost matrix. And that's it.
+            <br />
+            <br />
+            You probably wonder why we need all this. Well, what if I told you that matrix products in the $(\min, +)$ semi-ring can be done <i>faster than the naive $O(n^3)$ algorithm</i>?
+          </p>
+
+          <br />
+          <h3>The New Algorithm</h3>
+          <p>
+            So we just saw that, actually, the standard Bellman-Held-Karp algorithm is doing naively the min-plus matrix product between the previous layer of the DP-table and the cost matrix.
+            For compliance with the existing algorithms on min-plus matrix products, we group the DP-rows of the previous layer so to have only square matrices.
+
+          </p>
+          <h4>Running Time</h4>
+          <p>
+            You may ask: <i>But does this change the time-complexity?</i>
+
+            At a first sight, the new perspective just computes the new DP-layer in another, different manner. So if a min-plus product between two $n\times n$-matrices takes $T(n)$ time, then our new algorithm takes time
+            <div style="text-align: center;">
+              <p>
+                $O(\frac{2^n}{n} T(n))$.
+              </p>
+            </div>
+          </p>
+          <p>
+            If we use the naive algorithm for the min-plus matrix product, that is $T(n) = O(n^3)$, we're still in the regime of $O(2^n n^2)$.
+            So the question is:
+            <div style="text-align: center;">
+              <p>            
+                <i>Are there faster algorithms for this kind of product?</i>
+              </p>
+            </div>
+          </p>
+          <h4>Min-Plus Matrix Product</h4>
+          <p>
+            Fortunately for us, there has been a long line of research on this problem.
+            Research on faster min-plus matrix product has already started in the 1976 with Fredman's work on All-Pairs Shortest Paths (APSP), which is in itself very interesting problem in algorithmic design.
+            The fastest algorithm is due to Williams and runs in the following (very complicated looking) term:
+            <div style="text-align: center;">
+              <p>
+                $n^3 / 2^{\Omega(\sqrt{\log n})}$.
+              </p>
+            </div>
+          </p>
+
+          <h4>Summary</h4>
+          <p>
+            Combining the last parts, we thus obtain an $O(2^n n^2 / 2^{\Omega(\sqrt{\log n})})$-time algorithm for TSP. This improves over the decades old algorithm taught in every lecture since the 60's.
+            Feel free to use this blog post in your teaching. For more details, check out the <a href="https://arxiv.org/abs/2405.03018">pre-print</a>. Figures to better visualize the algorithm are more than welcome!
+          </p>
+          <p style="color: #D3D3D3">Last update: June 7, 2024</p>
         </div>
       </div>
     </div>
