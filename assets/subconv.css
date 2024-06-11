@@ -1,17 +1,18 @@
-.container {
+.viz-container {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
 }
 
 .function, .symbol, .result {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 20px;
+  font-size: 16px;
+  margin: 0 25px;
 }
 
 .vector {
@@ -42,6 +43,11 @@
   margin: 2px;
 }
 
+.bold {
+  font-weight: bold;
+  color: goldenrod; /* You can change the color here */
+}
+
 .value:first-child {
   border-left: 1px solid #ccc; /* Add border only to the right of the first child */
 }
@@ -56,8 +62,27 @@
   margin: 0 20px;
 }
 
-.container > * {
+.viz-container > .function, .result {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #45a049; /* Darker green */
 }
