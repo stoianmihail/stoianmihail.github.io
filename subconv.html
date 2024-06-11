@@ -110,7 +110,7 @@
           </p>
           <div class="viz-container" id="trigger-point">
             <div class="function">
-              <div class="label"><p>$f$</p></div>
+              <div class="label">$f$</div>
               <div class="vector" id="f">
               </div>
             </div>
@@ -118,7 +118,7 @@
             <div class="symbol">$\ast$</div>
         
             <div class="function">
-              <div class="label"><p>$g$</p></div>
+              <div class="label">$g$</div>
               <div class="vector" id="g">
               </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="symbol">=</div>
         
             <div class="result">
-              <div class="label"><p>$h$</p></div>
+              <div class="label">$h$</div>
               <div class="vector" id="h">
               </div>
             </div>
@@ -156,20 +156,20 @@
   const hVector = document.getElementById('h');
 
   // Display values of vectors f and g
-  [f, g].forEach((vector, index) => {
+  [f, g, h].forEach((vector, index) => {
     vector.forEach((value, idx) => {
       const div = document.createElement('div');
       const p = document.createElement('p');
-      div.innerHTML = `<div class="index">${idx.toString(2).padStart(3, '0')}:&nbsp;</div><div class="value">${value}</div>`;
-      index === 0 ? fVector.appendChild(div) : gVector.appendChild(div);
+      // div.innerHTML = `<div class="index"><code>${idx.toString(2).padStart(3, '0')}</code>:&nbsp;</div><div class="value">${value}</div>`;
+      div.innerHTML = `<div class="index"><code>${idx.toString(2).padStart(3, '0')}</code>:&nbsp;</div><div class="value" style="font-size: calc(16px + 2px);">${value}</div>`;
+      if (index === 0) {
+        fVector.appendChild(div);
+      } else if (index === 1) {
+        gVector.appendChild(div);
+      } else {
+        hVector.appendChild(div);
+      }
     });
-  });
-
-  // Display initial values of vector h
-  h.forEach((value, idx) => {
-    const div = document.createElement('div');
-    div.innerHTML = `<div class="index">${idx.toString(2).padStart(3, '0')}:&nbsp;</div><div class="value">${value}</div>`;
-    hVector.appendChild(div);
   });
 
   // Convolution
