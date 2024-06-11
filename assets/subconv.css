@@ -1,18 +1,17 @@
 .viz-container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   background-color: #fff;
   padding: 20px;
-  /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
 }
 
 .function, .symbol, .result {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* font-size: 16px; */
-  margin: 0 25px;
+  justify-content: center; /* Add this line */
+  margin: 10px;
 }
 
 .vector {
@@ -47,11 +46,11 @@
 
 .bold {
   font-weight: bold;
-  color: goldenrod; /* You can change the color here */
+  color: goldenrod;
 }
 
 .value:first-child {
-  border-left: 1px solid #ccc; /* Add border only to the right of the first child */
+  border-left: 1px solid #ccc;
 }
 
 .label {
@@ -68,4 +67,23 @@
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .viz-container {
+    padding: 10px;
+  }
+  .function, .symbol, .result {
+    margin: 5px;
+  }
+  .vector {
+    margin: 2px 0;
+  }
+  .value {
+    width: 30px;
+    padding: 3px;
+  }
+  .symbol {
+    font-size: 20px;
+  }
 }
