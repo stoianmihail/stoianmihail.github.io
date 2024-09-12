@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
   <title>Mihail Stoian</title>
-  <meta content="I am first-year PhD student in the UTN Data Systems Lab, advised by Andreas Kipf. My main interest is in query optimization for cloud databases." name="description"/>
+  <meta content="I am first-year PhD student in the UTN Data Systems Lab, advised by Andreas Kipf. My main focus is on foundation models for query optimization." name="description"/>
   <meta content="Mihail Stoian" property="og:title"/>
-  <meta content="I am first-year PhD student in the UTN Data Systems Lab, advised by Andreas Kipf. My main interest is in query optimization for cloud databases." property="og:description"/>
+  <meta content="I am first-year PhD student in the UTN Data Systems Lab, advised by Andreas Kipf. My main focus is on foundation models for query optimization." property="og:description"/>
   <meta content="Mihail Stoian" property="twitter:title"/>
-  <meta content="I am first-year PhD student in the UTN Data Systems Lab, advised by Andreas Kipf. My main interest is in query optimization for cloud databases." property="twitter:description"/>
+  <meta content="I am first-year PhD student in the UTN Data Systems Lab, advised by Andreas Kipf. My main focus is on foundation models for query optimization." property="twitter:description"/>
   <meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <meta name="google-site-verification" content="fIytXY575Nxnr06RpUCcDtBlYJnFlI2e59vCZp0TBE0" />
@@ -25,6 +25,30 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
   <!-- <link href="TODO" rel="shortcut icon" type="image/x-icon"/> -->
+
+  <style>
+    .tldr {
+        display: none;
+        margin-top: 10px;
+    }
+    .show-button {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+    }
+  </style>
+      <script>
+        function toggleTLDR() {
+            var tldr = document.getElementById("tldr");
+            if (tldr.style.display === "none") {
+                tldr.style.display = "block";
+                document.querySelector(".show-button").innerText = "Hide TL;DR";
+            } else {
+                tldr.style.display = "none";
+                document.querySelector(".show-button").innerText = "Show TL;DR";
+            }
+        }
+    </script>
 
 
 <!-- <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b7c0e0392774f00113b1368&product=inline-share-buttons' async='async'></script> -->
@@ -66,7 +90,7 @@
       <!-- <img src="assets/profile.jpg" loading="lazy" width="200" sizes="200px" alt="" srcset="assets/main-profile-2.jpg" class="image-3"/> -->
       <h3 class="home-heading">Mihail Stoian</h3>
       <div href="" class="w-richtext">
-        <p>I am first-year PhD student in the newly-founded <a href="https://www.utn.de/en/departments/department-engineering/data-systems-lab/">Data Systems Lab</a> at UTN, advised by Andreas Kipf. My main interest is in query optimization for cloud databases.</p>
+        <p>I am first-year PhD student in the newly-founded <a href="https://www.utn.de/en/departments/department-engineering/data-systems-lab/">Data Systems Lab</a> at UTN, advised by Andreas Kipf. My main focus is on foundation models for query optimization.</p>
         <p>Previously, I worked as a student research assistant in the <a href="https://db.in.tum.de/">TUM database group</a> (Prof. Thomas Neumann) and in the <a href="https://www.cs.cit.tum.de/en/daml/home/">DAML group</a> (Prof. Stephan Günnemann).</p>
         <p>During my studies I did two industry internships at Oracle Labs and Amazon Redshift.</p>
         <p>Whenever I see a problem in other areas that is similar to a database problem, I cannot leave it unsolved (see my <a href="blog.html">blog</a>).</p>
@@ -74,63 +98,92 @@
       </div>
     </div>
     <div class="content-width-div w-clearfix">
-      <h2 id="preprints">Preprints</h2>
-      <ul>
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2405.03018">TSP Escapes the $O(2^n n^2)$ Curse</a> [<a href="https://github.com/stoianmihail/fastertsp">proof-of-concept</a>] [<a href="tsp.html">blog</a>]<br />
-            Mihail Stoian
-            <br />
-            <br /><code>TL;DR:</code> First improvement on the $O(2^n n^2)$-time algorithm for the Traveling Salesman Problem by Bellman and Held-Karp, designed in 1962.
-            <br />
-            <br /><code>TL;DR++:</code> This <a href="https://xkcd.com/399/">xkcd</a> needs a remake.
-            <div style="text-align: center;">
-              <img src="assets/tsp-before.png" alt="Description of image" style="width:auto;height:auto; display: block; margin: 0 auto;"/>
-              <span style="text-align: center; font-size: 10px;">Original: https://xkcd.com/399/</span>
-            </div>
-          </p>
-        </li> 
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2404.18522">Did Fourier Really Meet Möbius? Fast Subset Convolution via FFT</a><br />
-            Mihail Stoian
-            <br />
-            <br /><code>TL;DR.</code> There is no need for Zeta/Möbius transforms in <a href="https://arxiv.org/abs/cs/0611101">fast subset convolution</a>. FFT suffices. Even in the same running time.
-          </p>
-        </li>       
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2404.11364v2">Sinking an Algorithmic Isthmus: $(1 + \varepsilon)$-Approximate Min-Sum Subset Convolution</a><br />
-            Mihail Stoian
-            <br />
-            <br /><code>TL;DR:</code> First proposal for approximate min-sum subset convolution. This results in out-of-the-box exp-time $(1 + \varepsilon)$-approximations for prize-collecting Steiner tree, min-cost $k$-coloring, protein networks, and more applications in computational biology.
-          </p>
-        </li>
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2403.17229">Corra: Correlation-Aware Column Compression</a><br />
-            Hanwen Liu, <strong>Mihail Stoian</strong>, Alexander van Renen, Andreas Kipf
-            <br />
-            <br /><code>TL;DR:</code> Are you still using FOR-, Delta-, RLE-encodings? Correlation-aware column encodings can compress your data even better!
-          </p>
-        </li>
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2403.04867">Unified Mechanism-Specific Amplification by Subsampling and Group Privacy Amplification</a><br />
-            Jan Schuchardt, <strong>Mihail Stoian*</strong>, Arthur Kosmala*, Stephan Günnemann
-          </p>
-        </li>
-        <li>
-          <p>
-            <a href="https://arxiv.org/abs/2209.12332">On the Optimal Linear Contraction Order of Tree Tensor Networks, and Beyond</a><br />
-            <strong>Mihail Stoian</strong>, Richard Milbradt, Christian B. Mendl<br />
-            <br /><code>TL;DR:</code> Polynomial-time contraction ordering algorithm for <i>tree tensor networks</i> for the total contraction cost. Extension of the well-known <code>IKKBZ</code> algorithm in databases. Check out our package <a href="https://github.com/stoianmihail/netzwerk"><code>Netzwerk</code></a> with plug-in for <code>opt_einsum</code> and <code>cotengra</code>!
-          </p>
-        </li>
-      </ul>
-    
       <!-- Publications -->
       <h2 id="Publications">Publications</h2>
+        <h3 id="2025">2025</h3>
+        <ul>
+          <li>
+            <p>
+              <a href=""><code>DPconv</code>: Super-Polynomially Faster Join Ordering</a>
+                [<a href="https://github.com/utndatasystems/DPconv">code</a>]
+              <br />
+              <strong>Mihail Stoian</strong>, Andreas Kipf
+              <br />
+              <em>SIGMOD 2025</em>
+              <details>
+                <summary><code>TL;DR</code></summary><br />
+                <p style="color: #FF8C00">
+                  Forget about $O(3^n)$-time dynamic programming evaluations.
+                </p>
+              </details>
+            </p>
+          </li>
+        </ul>
+        
+        <h3 id="2024">2024</h3>
+        <ul>
+          <li>
+            <p>
+              <a href="https://www.vldb.org/pvldb/vol17/p4449-renen.pdf">DataLoom: Simplifying Data Loading with LLMs</a>
+              [<a href="https://github.com/utndatasystems/data-loom-vldb-demo">code</a>]
+              <br />
+                Alexander van Renen, <strong>Mihail Stoian</strong>, Andreas Kipf
+              <br />
+              <em>VLDB Demo 2024</em>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://arxiv.org/abs/2404.11364v3">Approximate Min-Sum Subset Convolution</a>
+                [<a href="assets/approx-min-sum-conv.pdf">slides</a>]
+              <br />
+              Mihail Stoian
+              <br />
+              <em>WAOA @ ALGO 2024</em>
+              
+              <details>
+                <summary><code>TL;DR</code></summary><br />
+                <p style="color: #FF8C00">
+                  First proposal for approximate min-sum subset convolution. This results in out-of-the-box exp-time $(1 + \varepsilon)$-approximations for prize-collecting Steiner tree, min-cost $k$-coloring, protein networks, and more applications in computational biology.
+                </p>
+              </details>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://arxiv.org/abs/2403.17229">Corra: Correlation-Aware Column Compression</a><br />
+              Hanwen Liu, <strong>Mihail Stoian</strong>, Alexander van Renen, Andreas Kipf
+              <br />
+              <em>CloudDB @ VLDB 2024</em>
+
+              <details>
+                <summary><code>TL;DR</code></summary><br />
+                <p style="color: #FF8C00">
+                  Are you still using FOR-, Delta-, RLE-encodings? Correlation-aware column encodings can compress your data even better!</details>
+                </p>
+              </details>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://arxiv.org/abs/2209.12332">On the Optimal Linear Contraction Order of Tree Tensor Networks, and Beyond</a>
+                [<a href="https://github.com/stoianmihail/netzwerk"><code>netzwerk</code></a>]
+              <br />
+              <strong>Mihail Stoian</strong>, Richard Milbradt, Christian B. Mendl<br />
+              <em>SIAM Journal on Scientific Computing</em>
+              <br />
+              <br />
+              &rarr; Check out our package <a href="https://github.com/stoianmihail/netzwerk"><code>netzwerk</code></a> with plug-in for <code>opt_einsum</code> and <code>cotengra</code>.
+              <details>
+                <summary><code>TL;DR</code></summary><br />
+                <p style="color: #FF8C00">
+                  Polynomial-time contraction ordering algorithm for <i>tree tensor networks</i> for the total contraction cost. Extension of the well-known <code>IKKBZ</code> algorithm in databases.
+                </p>
+              </details>
+            </p>
+          </li>
+        </ul>
+
         <h3 id="2023">2023</h3>
         <ul>
           <li>
@@ -138,7 +191,7 @@
               [<a href="https://github.com/stoianmihail/fast-joint-shapley">code</a>] [<a
                 href="https://dl.acm.org/doi/10.1145/3555041.3589393">recording</a>]<br />
               Mihail Stoian<br />
-              <em>SRC @ SIGMOD 2023</em>.
+              <em>SRC @ SIGMOD 2023</em>
             </p>
           </li>
           <li>
@@ -146,7 +199,7 @@
               [<a href="https://github.com/stoianmihail/faster-like">code</a>] [<a
                 href="https://dl.acm.org/doi/10.1145/3555041.3589391">recording</a>]<br />
               Mihail Stoian<br />
-              <em>SRC @ SIGMOD 2023</em>.
+              <em>SRC @ SIGMOD 2023</em>
             </p>
           </li>
         </ul>
@@ -158,7 +211,7 @@
                 href="https://github.com/stoianmihail/Concurrent-Link-Cut-Trees">code</a>] [<a
                 href="https://youtu.be/qn-998LN5Zg">recording</a>]<br />
               Mihail Stoian | Advised by Jana Giceva and Philipp Fent<br />
-              <em>SRC @ SIGMOD 2022</em>.
+              <em>SRC @ SIGMOD 2022</em>
             </p>
           </li>
         </ul>
@@ -169,8 +222,8 @@
             <p><a href="https://arxiv.org/pdf/2108.05117.pdf">Towards Practical Learned Indexing</a> [<a
                 href="https://github.com/stoianmihail/TrieSpline">code</a>] [<a
                 href="https://www.youtube.com/watch?v=NTu95CrtWw0">recording</a>]<br />
-              <strong>Mihail Stoian</strong>, Andreas Kipf, Ryan Marcus, and Tim Kraska.<br />
-              <em>AIDB @ VLDB 2021</em>.
+              <strong>Mihail Stoian</strong>, Andreas Kipf, Ryan Marcus, and Tim Kraska<br />
+              <em>AIDB @ VLDB 2021</em>
             </p>
           </li>
 
@@ -180,8 +233,8 @@
                 href="https://github.com/learnedsystems/SOSD">code</a>] [<a
                 href="https://learnedsystems.github.io/SOSDLeaderboard/leaderboard/">leaderboard</a>]<br />Ryan
               Marcus, Andreas Kipf, Alexander van Renen, <strong>Mihail Stoian</strong>, Sanchit Misra, Alfons Kemper,
-              Thomas Neumann, and Tim Kraska.<br />
-              <em>VLDB 2021</em>.
+              Thomas Neumann, and Tim Kraska<br />
+              <em>VLDB 2021</em>
             </p>
           </li>
         </ul>
@@ -193,8 +246,8 @@
                 Index</a> [<a href="https://github.com/learnedsystems/RadixSpline">code</a>] [<a
                 href="https://www.youtube.com/watch?v=or0JXc4UQ-4">talk</a>]<br />
               Andreas Kipf<sup>*</sup>, Ryan Marcus<sup>*</sup>, Alexander van Renen<sup>*</sup>, <strong>Mihail
-                Stoian</strong>, Alfons Kemper, Tim Kraska, and Thomas Neumann.<br />
-              <em>aiDM @ SIGMOD 2020</em>.
+                Stoian</strong>, Alfons Kemper, Tim Kraska, and Thomas Neumann<br />
+              <em>aiDM @ SIGMOD 2020</em>
             </p>
           </li>
         </ul>
@@ -205,14 +258,53 @@
             <p><a href="https://vldb.org/pvldb/vol14/p1-marcus.pdf">SOSD: A Benchmark for Learned Indexes</a> [<a
                 href="https://github.com/learnedsystems/SOSD">code</a>] <br />Andreas Kipf<sup>*</sup>, Ryan
               Marcus<sup>*</sup>, Alexander van Renen<sup>*</sup>, <strong>Mihail Stoian</strong>, Alfons Kemper,
-              Thomas Neumann, and Tim Kraska.<br />
-              <em>ML For Systems @ NeurIPS 2019</em>.
+              Thomas Neumann, and Tim Kraska<br />
+              <em>ML For Systems @ NeurIPS 2019</em>
             </p>
           </li>
         </ul>
       </ul>
+
+
+      <h2 id="preprints">Preprints</h2>
+      <ul>
+        <li>
+          <p>
+            <a href="https://arxiv.org/abs/2404.18522">Did Fourier Really Meet Möbius? Fast Subset Convolution via FFT</a><br />
+            Mihail Stoian
+            
+            <details>
+              <summary><code>TL;DR</code></summary><br />
+              <p style="color: #FF8C00">
+                There is no need for Zeta/Möbius transforms in <a href="https://arxiv.org/abs/cs/0611101" style="color:black">fast subset convolution</a>. FFT suffices. Even in the same running time.
+              </p>
+            </details>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="https://arxiv.org/abs/2403.04867">Unified Mechanism-Specific Amplification by Subsampling and Group Privacy Amplification</a><br />
+            Jan Schuchardt, <strong>Mihail Stoian*</strong>, Arthur Kosmala*, Stephan Günnemann
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="https://arxiv.org/abs/2405.03018">TSP Escapes the $O(2^n n^2)$ Curse</a> [<a href="https://github.com/stoianmihail/fastertsp">proof-of-concept</a>] [<a href="tsp.html">blog</a>]<br />
+            Mihail Stoian
+            <details>
+              <summary><code>TL;DR++</code></summary><br />
+              <p style="color: #FF8C00">
+                This <a href="https://xkcd.com/399/" style="color: black;">xkcd</a> needs a remake.
+                <div style="text-align: center;">
+                  <img src="assets/tsp-before.png" alt="Description of image" style="width:auto;height:auto; display: block; margin: 0 auto;"/>
+                  <span style="text-align: center; font-size: 10px;">Original: https://xkcd.com/399/</span>
+                </div>
+              </p>
+            </details>
+          </p>
+        </li>
+      </ul>
     </div>
-  </div>
 
   <!-- Invited Talks -->
   <div class="content-width-div w-clearfix">
@@ -229,7 +321,7 @@
   <!-- Contact -->
   <div class="content-width-div w-clearfix">
     <h2 id="contact">Contact</h2>
-    <p>firstname dot lastname the-well-known-character utn dot de</p>
+    <p>mihail.stoian@utn.de</p>
   </div>
   <div class="content-width-div">
     <div class="footer-div"><div class="text-block">© Mihail Stoian, 2024 | Custom style based on <a href="https://webflow.com">Webflow</a>
