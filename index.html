@@ -90,10 +90,10 @@
       <!-- <img src="assets/profile.jpg" loading="lazy" width="200" sizes="200px" alt="" srcset="assets/main-profile-2.jpg" class="image-3"/> -->
       <h3 class="home-heading">Mihail Stoian</h3>
       <div href="" class="w-richtext">
-        <p>I am second-year PhD student in the newly-founded <a href="https://www.utn.de/en/departments/department-engineering/data-systems-lab/">Data Systems Lab</a> at UTN, advised by Andreas Kipf. My current focus is on robust query processing.</p>
+        <p>I am a second-year PhD student in the newly-founded <a href="https://www.utn.de/en/departments/department-engineering/data-systems-lab/">Data Systems Lab</a> at UTN, advised by Andreas Kipf. My current focus is on robust query processing.</p>
         <p>Previously, I worked as a student research assistant in the <a href="https://db.in.tum.de/">TUM database group</a> (Prof. Thomas Neumann) and in the <a href="https://www.cs.cit.tum.de/en/daml/home/">DAML group</a> (Prof. Stephan Günnemann).</p>
         <p>During my studies I did two industry internships at Oracle Labs and Amazon Redshift.</p>
-        <p>Whenever I see a problem in other areas that is similar to a database problem, I cannot leave it unsolved (see my <a href="blog.html">blog</a>).</p>
+        <!-- <p>Working in algorithm design when time permits (<a href="blog.html">blog</a>).</p> -->
         <p>[<a href="https://scholar.google.com/citations?user=7PEMO6UAAAAJ&hl=en">Google Scholar</a>] | [<a href="https://github.com/stoianmihail">GitHub</a>] | [<a href="https://x.com/mihail_sto">Twitter</a>]</p>
       </div>
     </div>
@@ -110,6 +110,9 @@
               <strong>Mihail Stoian</strong>, Andreas Kipf
               <br />
               <em>SIGMOD 2025</em>
+              <br />
+              <br />
+              [<a href="./assets/dpconv-slides.pdf" style="color: gray;">Slides @Microsoft GSL</a>]
               <details>
                 <summary><code>TL;DR</code></summary><br />
                 <p style="color: #FF8C00">
@@ -120,7 +123,22 @@
           </li>
           <li>
             <p>
-              <a href="#">Optimizing Linearized Join Enumeration by Adapting to the Query Structure</a>
+              <a href="#">Virtual: Compressing Data Lake Files</a>
+              <br />
+              <strong>Mihail Stoian</strong>, Alexander van Renen, Jan Kobiolka, Ping-Lin Kuo, Andreas Zimmerer, Josif Grabocka, Andreas Kipf
+              <br />
+              <em>EDBT Demo 2025</em>
+              <details>
+                <summary><code>TL;DR</code></summary><br />
+                <p style="color: #FF8C00">
+                  <code>Virtual</code> learns sparse regressors to level up Parquet file sizes, while having bounded column scan overhead in the number of reference columns.
+                </p>
+              </details>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://db.in.tum.de/~birler/papers/adaptivelindp.pdf">Optimizing Linearized Join Enumeration by Adapting to the Query Structure</a>
               <br />
               Altan Birler, <strong>Mihail Stoian</strong>, Thomas Neumann
               <br />
@@ -141,12 +159,14 @@
             <p>
               <a href="https://arxiv.org/abs/2410.14066">Lightweight Correlation-Aware Table Compression</a>
               [<a href="https://github.com/utndatasystems/virtual">code</a>]
-              [<a href="./assets/virtual-slides-short.pdf">slides</a>]
               [<a href="https://www.youtube.com/watch?v=B0bUTNIJ1O8">recording</a>]
               <br />
               <strong>Mihail Stoian</strong>, Alexander van Renen, Jan Kobiolka, Ping-Lin Kuo, Josif Grabocka, Andreas Kipf
               <br />
               <em>Table Representation Learning @ NeurIPS 2024</em>
+              <br />
+              <br />
+              [<a href="./assets/virtual-slides-short.pdf" style="color: gray;">Slides @TRL</a>]
               <details>
                 <summary><code>TL;DR</code></summary><br />
                 <p style="color: #FF8C00">
@@ -185,12 +205,13 @@
           <li>
             <p>
               <a href="https://arxiv.org/abs/2404.11364v3">Approximate Min-Sum Subset Convolution</a>
-                [<a href="assets/approx-min-sum-conv.pdf">slides</a>]
               <br />
               <strong>Mihail Stoian</strong>
               <br />
               <em>WAOA @ ALGO 2024</em>
-              
+              <br />
+              <br />
+              [<a href="assets/approx-min-sum-conv.pdf" style="color: gray;">Slides @WAOA</a>]
               <details>
                 <summary><code>TL;DR</code></summary><br />
                 <p style="color: #FF8C00">
@@ -356,7 +377,21 @@
     <ul>
       <li>
         <p>
-          <i>What do databases and tensor networks have in common?</i> August, 2023<br />@Universität Jena @<a href="https://www.ti2.uni-jena.de/team/prof-joachim-giesen">Joachim Giesen</a>'s group. Check out their amazing tools: <a href="https://www.matrixcalculus.org">Matrix Calculus</a>, used in RelationalAI's <a href="https://fdbresearch.github.io/workshop2022/slides/Mahmoud.AboKhamis.FDBworkshop2022.slides.pdf">AutoDiff</a>, and <a href="https://www.ti2.uni-jena.de/research">more</a>!
+          <code>DPconv</code>: Super-Polynomially Faster Join Ordering<br />January, 2025<br />@Microsoft GSL
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>Virtual</code>: Compressing World's Parquet Files<br />January, 2025<br />@TUMuchData
+        </p>
+      </li>
+      <li>
+        <p>
+          What do databases and tensor networks have in common?
+          <br />
+          August, 2023
+          <br />
+          @Universität Jena @<a href="https://www.ti2.uni-jena.de/team/prof-joachim-giesen">Joachim Giesen</a>'s group. Check out their amazing tools: <a href="https://www.matrixcalculus.org">Matrix Calculus</a>, used in RelationalAI's <a href="https://fdbresearch.github.io/workshop2022/slides/Mahmoud.AboKhamis.FDBworkshop2022.slides.pdf">AutoDiff</a>, and <a href="https://www.ti2.uni-jena.de/research">more</a>!
         </p>
       </li>  
     </ul>
@@ -368,7 +403,7 @@
     <p>mihail.stoian@utn.de</p>
   </div>
   <div class="content-width-div">
-    <div class="footer-div"><div class="text-block">© Mihail Stoian, 2024 | Custom style based on <a href="https://webflow.com">Webflow</a>
+    <div class="footer-div"><div class="text-block">© Mihail Stoian, 2025 | Custom style based on <a href="https://webflow.com">Webflow</a>
     </div>
   </div>
 </div>
