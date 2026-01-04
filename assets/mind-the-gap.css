@@ -21,10 +21,3 @@
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
-
-.w-richtext blockquote {
-  border: 1px solid #ddd;
-  padding: 16px;
-  background: #fafafa;
-  font-style: italic;
-}

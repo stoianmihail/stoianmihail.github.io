@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Mind the Gap</title>
+  <meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta name="google-site-verification" content="fIytXY575Nxnr06RpUCcDtBlYJnFlI2e59vCZp0TBE0" />
+  <link href="assets/main.css" rel="stylesheet" type="text/css"/>
+  <link href="assets/mind-the-gap.css" rel="stylesheet" type="text/css"/>
+  <!-- <link rel="icon" href="assets/tsp-before.png" type="image/x-icon"/> -->
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic","PT Serif:400,400italic,700,700italic","Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","PT Sans:400,400italic,700,700italic"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  
+  <!-- Enable Latex. -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <script>
+    MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+  <script defer type="text/javascript" src="https://schema.delivery/s/d3d3Lm5hdGVsaWFzb24uY29t/install.js"></script>
+
+  <link rel="canonical" href="https://stoianmihail.github.io/" />
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+    <div class="container w-container">
+      <div class="div-block">
+        <nav role="navigation" class="nav-menu w-nav-menu">
+          <a class="nav-link w-nav-link" style="font-size: 20px;" href="assets/stoian-cv.pdf" download>📄 CV as PDF</a>
+          <a href="index.html" class="nav-link w-nav-link" style="font-size: 20px;">ℹ️ About</a>
+          <a href="teaching.html" class="nav-link w-nav-link" style="font-size: 20px;">🍏 Teaching</a>
+          <a href="blog.html" class="nav-link w-nav-link" style="font-size: 20px;">🪶 Blog</a>
+        </nav>
+      </div>      
+      <div class="w-nav-button">
+        <div class="w-icon-nav-menu">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="w-container">
+      <div class="content-width-div w-clearfix">
+
+        <!-- Markdown source -->
+        <div id="post-md">
+
+## Mind the Gap. Doubling Constant Parametrization of Weighted Problems
+
+<br>
+
+**TL;DR.** When the set of input weights has small doubling, TSP can be solved in the same time as Hamiltonicity; the same holds for Max-Cut and edge-weighed $k$-Clique ([paper](https://arxiv.org/abs/)).
+
+### A Striking Dichotomy
+
+A central question in algorithm design over the last two decades has been whether unweighted problems can be solved faster than their weighted counterparts.
+
+Consider the traveling salesman problem (TSP)&mdash;computing the shortest tour through $n$ cities. This is a weighted problem, since we have input weights, the road lengths between the cities. We know from it's solvable in $2^n$ steps since the 60s. But what about when you don't have weights? That's the Hamiltonicity problem: You want to know whether there _is_ such a route which passes through all the cities. Until 2014, we didn't know how to solve it in fewer than $2^n$ steps.
+In a <i>tour de force</i>, A. Björklund [showed](https://arxiv.org/abs/1008.0541) how to solve it in $1.66^n$ steps; he actually received the Nerode Prize for the algorithm.
+
+So, you see, there is this gap between the two running times for the weighted and unweighted cases.
+Remarkably, TSP is not alone in this situation.
+We also have the weighted Max-Cut problem&mdash;partition the vertex set of graph into two, so as to maximize the sum of the edge weights between the two parts.
+The naive algorithm runs in $2^n$ steps. In a surprising result, R. Williams [showed](https://www.sciencedirect.com/science/article/pii/S0304397505005438) that you can do better than this in the unweighted setting, namely in $1.73^n$ steps.
+
+And the list can go on with more NP-hard problems that showcase this dichotomy between the running times.
+
+What's even more interesting is that all of these papers on unweighted problems mention a theorem at some point that explains how to extend the algorithm to work for weighted problems.
+Namely, they assume that all the weights are below a certain threshold $W$, and say that for TSP, for instance, the algorithm runs in $1.66^n \times W$ steps. What we have here is a pseudo-polynomial depedence on the largest weight.
+If you have really large weights, say $W = 2^n$, then the adapted algorithm becomes _slower_ than the standard one from the 60s.
+Consequently, people assume $W$ is polynomial, e.g., $n^3$, and write sth like "TSP can be solved in $1.66^n$ steps, assuming small input weights".
+
+So the question is now:
+<div class="box">
+  <p>
+    <i>
+      Is the small input weights setting the only one where the weighted problem can be solved in the same running time as the unweighted problem? 🤔
+    </i>
+  </p>
+</div>
+
+### Result
+
+We show that, shockingly, it's _not_.
+
+As long as your set of input weights has small doubling&mdash;I'll explain what that means in a second, you can solve your weighted problem in the same time as you do for the unweighted one.
+
+Small doubling means: Let $A$ denote your input weights, then if the cardinality of the sumset $A + A$, that is, all the sums you can make from pairs in $A$, is not that large, then the set has small doubling; basically, if there's a constant $C$ such that $|A + A| \leq C|A|$.
+
+Let's look at an example: Suppose my set $A$ is $\\{1, 3, 5\\}$. Then:
+
+$$
+  A + A = \\{1 + 1, 1 + 3, 1 + 5, 3 + 3, 3 + 5, 5 + 5\\} = \\{2, 4, 6, 8, 10\\}.
+$$
+
+Note that this is a set, so we have to remove the duplicates. Hence, the doubling constant is
+$$
+  \frac{|A + A|}{|A|} = \frac{5}{3} = 1.66.
+$$
+
+In other words, for the input weights to have small doubling, the ratio $|A + A| / |A|$ must be a constant, i.e., it doesn't depend on the input.
+
+### Approach
+
+We use Freiman's theorem, a well-known theorem from additive combinatorics, which has a rather intriguing conclusion: If you know your set A has small doubling, then it's contained in a (generealized) arithmetic progression. You may be familiar with simple arithmetic progressions, such as 1, 3, 5, 7, 9, 11 ..., but maybe the generalized one may be new to you. Instead of having just one generator, as in the simple progression, it can have multiple generators., e.g., 2x + 3y + 5. The previous example of a simple progression had the form 2x + 1, so its generator is 2.
+
+But what does this have to do with TSP? Say $A$ now denotes the edge weights in your graph (the road lengths between cities). Then, the sumset $A + A$ comprises of all possible 2-edge paths that could ever be formed. Of course, this also covers the weird case where an edge repeats. It's probably happened to you once in your lifetime that you had to drive back because you forgot something important, like your passport.
+
+To cover not just the 2-edge paths, but all $n$-edge paths - since we need a tour in TSP, we actually need the extended sumset $A + A + ... + A$, where $A$ is repeated $n$ times.
+
+In short, we establish a connection between Freiman's theorem, for which a constructive version now [exists](https://arxiv.org/abs/2407.18228), and weighted NP-hard problems, which always sum their input weights. Please refer to the paper for more details!
+
+### Outlook
+
+I anticipate more work at the intersection of this refreshing field of additive combinatorics and weighted problems, not limited to NP-hard problems - see Sec. 5!
+          </div>
+          <p style="color: #D3D3D3">Last update: January 5, 2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ad140380e93f3d3bbdaeb8a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<script>
+  const el = document.getElementById("post-md");
+  if (el) {
+    el.innerHTML = marked.parse(el.innerHTML);
+    if (window.MathJax) {
+      MathJax.typesetPromise();
+    }
+  }
+</script>
+
+</body>
+</html>
