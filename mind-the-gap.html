@@ -112,7 +112,7 @@ In other words, for the input weights to have small doubling, the ratio $|A + A|
 We use [Freiman's theorem](https://en.wikipedia.org/wiki/Freiman%27s_theorem), a well-known result from additive combinatorics, which has a rather intriguing conclusion: If you know the set $A$ has small doubling, then it's contained in a (generealized) arithmetic progression. You may be familiar with simple arithmetic progressions, such as 1, 3, 5, 7, 9, 11 ..., but maybe the generalized one may be new to you. Instead of having just one generator, as in the simple progression, it can have multiple generators., e.g., 2x + 3y + 5. The previous example of a simple progression had the form 2x + 1, so its generator is 2.
 
 But what does this have to do with TSP? Say $A$ denotes the edge weights in your graph (the road lengths between cities). Then, the sumset $A + A$ comprises of all possible 2-edge paths that could ever be formed.
-Of course, this also covers the weird case where an edge repeats (that's like when you have to drive back because you forgot something important, like your wallet 🙃).
+Of course, this also covers the weird case where an edge repeats (similar to when you have to drive back because you forgot something important, like your wallet 🙃).
 
 To cover not just 2-edge paths, but **all** $n$-edge paths&mdash;since we need a tour in TSP, we actually need the extended sumset $A + A + ... + A$, where $A$ is repeated $n$ times.
 
