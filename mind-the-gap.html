@@ -64,13 +64,13 @@
 
 A central question in algorithm design over the last two decades has been whether unweighted problems can be solved faster than their weighted counterparts.
 
-Consider the traveling salesman problem (TSP)&mdash;computing the shortest tour through $n$ cities. This is a weighted problem, since we have input weights, the road lengths between the cities. We know from it's solvable in $2^n$ steps since the 60s. But what about when you don't have weights? That's the Hamiltonicity problem: You want to know whether there _is_ such a route which passes through all the cities. Until 2014, we didn't know how to solve it in fewer than $2^n$ steps.
+Consider the traveling salesman problem (TSP)&mdash;computing the shortest tour through $n$ cities. This is a weighted problem, since we have input weights, the road lengths between the cities. We know from the 60s that it's solvable in $2^n$ steps. But what about when you don't have weights? That's the Hamiltonicity problem: You want to know whether there _is_ such a route, that is, a path which simply passes through all the cities. Until 2014, we didn't know how to solve it in fewer than $2^n$ steps.
 In a <i>tour de force</i>, A. Björklund [showed](https://arxiv.org/abs/1008.0541) how to solve it in $1.66^n$ steps; he actually received the Nerode Prize for the algorithm.
 
 So, you see, there is this gap between the two running times for the weighted and unweighted cases.
 Remarkably, TSP is not alone in this situation.
-We also have the weighted Max-Cut problem&mdash;partition the vertex set of graph into two, so as to maximize the sum of the edge weights between the two parts.
-The naive algorithm runs in $2^n$ steps. In a surprising result, R. Williams [showed](https://www.sciencedirect.com/science/article/pii/S0304397505005438) that you can do better than this in the unweighted setting, namely in $1.73^n$ steps.
+The weighted Max-Cut problem&mdash;partition the vertex set of graph into two, so as to maximize the sum of the edge weights between the two parts, has met the same fate.
+The naive algorithm runs in $2^n$ steps. In a surprising result, R. Williams [showed](https://www.sciencedirect.com/science/article/pii/S0304397505005438) that one can do better than this in the unweighted setting, namely in $1.73^n$ steps.
 
 And the list can go on with more NP-hard problems that showcase this dichotomy between the running times.
 
@@ -82,9 +82,7 @@ Consequently, people assume $W$ is polynomial, e.g., $n^3$, and write sth like "
 So the question is now:
 <div class="box">
   <p>
-    <i>
-      Is the small input weights setting the only one where the weighted problem can be solved in the same running time as the unweighted problem? 🤔
-    </i>
+    <i>Is the small input weights setting the only one where the weighted problem can be solved in the same running time as the unweighted problem?</i> 🤔
   </p>
 </div>
 
@@ -94,9 +92,9 @@ We show that, shockingly, it's _not_.
 
 As long as your set of input weights has small doubling&mdash;I'll explain what that means in a second, you can solve your weighted problem in the same time as you do for the unweighted one.
 
-Small doubling means: Let $A$ denote your input weights, then if the cardinality of the sumset $A + A$, that is, all the sums you can make from pairs in $A$, is not that large, then the set has small doubling; basically, if there's a constant $C$ such that $|A + A| \leq C|A|$.
+Small doubling means: Let $A$ denote your input weights. If the cardinality of the sumset $A + A$, that is, all the sums you can make from pairs in $A$, is not that large, then the set has small doubling; basically, if there's a constant $C$ such that $|A + A| \leq C|A|$.
 
-Let's look at an example: Suppose my set $A$ is $\\{1, 3, 5\\}$. Then:
+Let's look at an example: Suppose our set $A$ is $\\{1, 3, 5\\}$. Then:
 
 $$
   A + A = \\{1 + 1, 1 + 3, 1 + 5, 3 + 3, 3 + 5, 5 + 5\\} = \\{2, 4, 6, 8, 10\\}.
@@ -111,11 +109,12 @@ In other words, for the input weights to have small doubling, the ratio $|A + A|
 
 ### Approach
 
-We use Freiman's theorem, a well-known theorem from additive combinatorics, which has a rather intriguing conclusion: If you know your set A has small doubling, then it's contained in a (generealized) arithmetic progression. You may be familiar with simple arithmetic progressions, such as 1, 3, 5, 7, 9, 11 ..., but maybe the generalized one may be new to you. Instead of having just one generator, as in the simple progression, it can have multiple generators., e.g., 2x + 3y + 5. The previous example of a simple progression had the form 2x + 1, so its generator is 2.
+We use [Freiman's theorem](https://en.wikipedia.org/wiki/Freiman%27s_theorem), a well-known result from additive combinatorics, which has a rather intriguing conclusion: If you know the set $A$ has small doubling, then it's contained in a (generealized) arithmetic progression. You may be familiar with simple arithmetic progressions, such as 1, 3, 5, 7, 9, 11 ..., but maybe the generalized one may be new to you. Instead of having just one generator, as in the simple progression, it can have multiple generators., e.g., 2x + 3y + 5. The previous example of a simple progression had the form 2x + 1, so its generator is 2.
 
-But what does this have to do with TSP? Say $A$ now denotes the edge weights in your graph (the road lengths between cities). Then, the sumset $A + A$ comprises of all possible 2-edge paths that could ever be formed. Of course, this also covers the weird case where an edge repeats. It's probably happened to you once in your lifetime that you had to drive back because you forgot something important, like your passport.
+But what does this have to do with TSP? Say $A$ denotes the edge weights in your graph (the road lengths between cities). Then, the sumset $A + A$ comprises of all possible 2-edge paths that could ever be formed.
+Of course, this also covers the weird case where an edge repeats (that's like when you have to drive back because you forgot something important, like your wallet 🙃).
 
-To cover not just the 2-edge paths, but all $n$-edge paths - since we need a tour in TSP, we actually need the extended sumset $A + A + ... + A$, where $A$ is repeated $n$ times.
+To cover not just 2-edge paths, but **all** $n$-edge paths&mdash;since we need a tour in TSP, we actually need the extended sumset $A + A + ... + A$, where $A$ is repeated $n$ times.
 
 In short, we establish a connection between Freiman's theorem, for which a constructive version now [exists](https://arxiv.org/abs/2407.18228), and weighted NP-hard problems, which always sum their input weights. Please refer to the paper for more details!
 
